@@ -14,7 +14,7 @@ Para funcionamento é necessário instalação do docker, mais instruções pode
 
 #### Método 1:
 
-No primeiro método é utilizado a docker pull, a imagem está disponivel dentro do docker hub sobrenome: fernandofsilva/giant-steps
+No primeiro método é utilizado a docker pull, a imagem está disponivel dentro do docker hub: fernandofsilva/giant-steps
 
 ```
 docker pull fernandofsilva/giant-steps:latest

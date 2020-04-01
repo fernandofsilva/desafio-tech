@@ -1,5 +1,5 @@
 # Import flask
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # Import Calculation custom class
 from Calculation import *
@@ -8,62 +8,62 @@ from Calculation import *
 # Initiate App
 app = Flask(__name__, template_folder='templates')
 
-# Class
-class Data:
-    def __init__(self, descricao, ean, sku, url, image):
-        self.descricao = descricao
-        self.ean = ean
-        self.sku = sku
-        self.url = url
-        self.image = image
-
-calc = Calculation(
-    fund_file='data/zarathustra.csv',
-    cdi_file='data/cdi.csv',
-    start_date = '2019-01-02',
-    end_date = '2019-01-31'
-)
-
-prod = Data('ADORNO LHAMA BR FULLFIT',
-            '7893220244896',
-            '14998079',
-            'https://www.pontofrio.com.br/decoracao/objetosdecorativos/adorno-vela-llama-em-porcelana-l15xp135cm-24745-14998079.html',
-            'https://www.pontofrio-imagens.com.br/decoracao/ObjetosDecorativos/14998079/1097088051/adorno-vela-llama-em-porcelana-l15xp135cm-24745-14998079.jpg')
-
-
-
-
-@app.route("/")
+@app.route('/')
 def main():
     return render_template(
-        "input.html",
+        'base.html',
         title='Desafio Tech'
     )
 
 
-# @app.route('/calculation_table', methods=['POST'])
-# def calculation_table():
-#
-#     POST = request.json
-#
-#     return render_template(
-#         "input.html",
-#         title='Desafio Tech',
-#         produtos=prod,
-#         calculation=calc
-#     )
-#
-# @app.route('/generate_chart', methods=['POST'])
-# def generate_chart():
-#
-#     POST = request.json
-#
-#     return render_template(
-#         "dados.html",
-#         title='Desafio Tech',
-#         produtos=prod,
-#         calculation=calc
-#     )
+@app.route('/', methods=['POST'])
+def process_calculation():
+
+    start_date = request.form['start_date']
+    end_date = request.form['end_date']
+
+    # Call Calculation class
+    calc = Calculation(
+        fund_file='data/zarathustra.csv',
+        cdi_file='data/cdi.csv',
+        start_date=start_date,
+        end_date=end_date
+    )
+
+    # # Cumulative return
+    # cum_ret_value = calc.calculate_cumulative_returns_value()
+    #
+    # # Calculate relative return
+    # rel_ret = calc.calculate_relative_return()
+    #
+    # Calculate minimum and maximum returns
+    min_value, min_date, max_value, max_date = calc.calculate_min_max_returns()
+
+    minimum = {'value': f'{min_value:.4f}',
+              'date': min_date}
+
+    maximum = {'value': f'{max_value:.4f}',
+               'date': max_date}
+
+    # Calculate Net Equity
+    net_equity = f'{calc.calculate_net_equity():.2f}'
+
+    # # Cumulative return
+    # cum_ret_table = calc.calculate_cumulative_returns_table()
+
+    return render_template(
+        'output.html',
+        title='Desafio Tech',
+        start_date=start_date,
+        end_date=end_date,
+        # ,
+        # cum_ret_value=cum_ret_value,
+        # rel_ret=rel_ret,
+        minimum=minimum,
+        maximum=maximum,
+        net_equity=net_equity
+        # cum_ret_table=cum_ret_table
+    )
 
 
 if __name__ == "__main__":

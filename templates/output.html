@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block output %}
+
+<body>
+    <div class="container">
+        <h4>Resultados</h4>
+        <body>
+            <p class="text-sm-left"><b>Rentabilidade do período em porcentagem:</b> 2,5406 %</p>
+            <p class="text-sm-left"><b>Rentabilidade relativa ao CDI em porcentagem:</b> 467,8768 %</p>
+            <p class="text-sm-left"><b>Evolução do patrimônio do fundo em Reais (BRL):</b> R$ {{net_equity}}</p>
+            <p class="text-sm-left"><b>Data e o valor de maior retorno diário em porcentagem:</b> {{maximum['date']}}, {{maximum['value']}} %</p>
+            <p class="text-sm-left"><b>Data e o valor de menor retorno diário em porcentagem:</b> {{minimum['date']}}, {{minimum['value']}} %</p>
+            <p class="text-sm-left"><b>Série de retorno acumulado do fundo:</b> 246,93%</p>
+        </body>
+    </div>
+</body>
+
+{% endblock %}

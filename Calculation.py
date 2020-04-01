@@ -220,6 +220,35 @@ class Calculation:
         return data[['date', 'cumulative_ret']]
 
 
+    def calculate_cumulative_returns_value(self) -> float:
+        """
+        This function calculates the cumulative returns of the fund
+        :return: float
+        """
+
+        # Process cumulative returns
+        data = Calculation.returns_calculation(
+            self.fund_data, self.__class__.column)
+
+        return data[-1, -1]
+
+
+    def calculate_cumulative_returns_table(self) -> float:
+        """
+        This function calculates the cumulative returns of the fund
+        :return: dict
+        """
+
+        # Process cumulative returns
+        data = Calculation.returns_calculation(
+            self.fund_data, self.__class__.column)
+
+        # rename columns
+        data.columns = ['Data', 'Retorno Acumulado']
+
+        return data
+
+
     def calculate_relative_return(self) -> float:
         """
         This function calculate the relative return of the fund using cdi as
@@ -265,7 +294,7 @@ class Calculation:
         # Get reference, since it's necessary to get the value before the
         # start_date this reference works as reference for the row before the
         # start_date
-        reference = data.loc[self.start_date:self.start_date, 'reference'][0]-1
+        reference = data.loc[self.start_date:self.end_date, 'reference'][0]-1
 
         # Net equity values
         start_value = data.loc[data['reference'] == reference, 'net_equity']
