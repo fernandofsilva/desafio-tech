@@ -14,10 +14,10 @@ Para funcionamento é necessário instalação do docker, mais instruções pode
 
 #### Método 1:
 
-No primeiro método é utilizado a docker pull, a imagem está disponivel dentro do docker hub sobrenome: xxxx
+No primeiro método é utilizado a docker pull, a imagem está disponivel dentro do docker hub sobrenome: fernandofsilva/giant-steps
 
 ```
-docker pull python
+docker pull fernandofsilva/giant-steps:latest
 ```
 
 #### Método 2:
@@ -25,7 +25,7 @@ docker pull python
 O segundo método é fazendo um clone do repositório e fazendo uma build da imagem com o comando abaixo:
 
 ```
-docker build -t giant-steps:latest
+docker build -t giant-steps . 
 ```
 
 
@@ -34,7 +34,7 @@ docker build -t giant-steps:latest
 Para acessar a aplicação do flask, é necessário executar o run e fazer um expose da porta para acesso externo, utilizando o comando abaixo:
 
 ```
-docker run -p 5000:5000 giant-steps
+docker run -p 5000:5000 fernandofsilva/giant-steps
 ```
 
 Após isso a aplicação em flask pode ser acessada utilizando o navegador (o código foi feito utilizando como base o navegador chrome, demais navegadores não são garantidos o funcionamento)
@@ -45,7 +45,7 @@ No navegador acesse o caminho: http://127.0.0.1:5000/
 ## Built With
 
 * [flask](https://flask.palletsprojects.com/en/1.1.x/) - Framework web
-* [python](https://www.python.org) - Dependency Management
+* [python](https://www.python.org) - script language
 
 
 ## Authors
