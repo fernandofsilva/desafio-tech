@@ -99,9 +99,7 @@
             $.ajax({
                 url: 'calculate',
                 data: postData,
-                success: function(data) {
-                    // TODO Aqui você pode escrever o código da saida, tipo rendererizar os dados
-                },
+                success: function(data){alert(data)},
                 error: function() {
                     alert('failure'); // Aqui é se acontecer algum erro no POST
                 }
