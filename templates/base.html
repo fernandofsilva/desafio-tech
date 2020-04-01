@@ -66,7 +66,7 @@
                     <label for="end_date">Data final:</label>
                     <input type="date" id="end_date" name="end_date" min="2012-03-07" max="2020-01-14">
                 </div>
-                <button type="submit" value="submit" class="btn btn-secondary btn-sm">Calculate</button>
+                <button type="button" onclick="Calculate()" class="btn btn-secondary btn-sm">Calculate</button>
             </form>
         </div>
 
@@ -82,6 +82,32 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        function Calculate() {
+            // Atribui o valor digitado na data para váriavel start_date. Utiliza a biblioteca jquery para facilitar
+            let start_date = $('#start_date').val()
+
+            // Atribui o valor digitado na data para váriavel end_date. Utiliza a biblioteca jquery para facilitar
+            let end_date = $('#end_date').val()
+
+            // Criar tipo um dict, é os dados que serão enviado via post
+            let postData = {
+                "start_date": start_date,
+                "end_date": end_date
+            }
+
+            $.ajax({
+                url: 'calculate',
+                data: postData,
+                success: function(data) {
+                    // TODO Aqui você pode escrever o código da saida, tipo rendererizar os dados
+                },
+                error: function() {
+                    alert('failure'); // Aqui é se acontecer algum erro no POST
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
