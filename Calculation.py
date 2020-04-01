@@ -226,11 +226,15 @@ class Calculation:
         :return: float
         """
 
-        # Process cumulative returns
+        # Return calculation
         data = Calculation.returns_calculation(
             self.fund_data, self.__class__.column)
 
-        return data[-1, -1]
+        data = Calculation.cumulative_returns(
+            self.start_date, self.end_date, data
+        )
+
+        return data.iloc[-1, -1]
 
 
     def calculate_cumulative_returns_table(self) -> float:
@@ -239,9 +243,13 @@ class Calculation:
         :return: dict
         """
 
-        # Process cumulative returns
+        # Return calculation
         data = Calculation.returns_calculation(
             self.fund_data, self.__class__.column)
+
+        data = Calculation.cumulative_returns(
+            self.start_date, self.end_date, data
+        )
 
         # rename columns
         data.columns = ['Data', 'Retorno Acumulado']

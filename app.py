@@ -30,12 +30,12 @@ def process_calculation():
         end_date=end_date
     )
 
-    # # Cumulative return
-    # cum_ret_value = calc.calculate_cumulative_returns_value()
-    #
-    # # Calculate relative return
-    # rel_ret = calc.calculate_relative_return()
-    #
+    # Cumulative return
+    cum_ret_value = f'{calc.calculate_cumulative_returns_value():.4f}'
+
+    # Calculate relative return
+    rel_ret = f'{calc.calculate_relative_return():.4f}'
+
     # Calculate minimum and maximum returns
     min_value, min_date, max_value, max_date = calc.calculate_min_max_returns()
 
@@ -49,20 +49,19 @@ def process_calculation():
     net_equity = f'{calc.calculate_net_equity():.2f}'
 
     # # Cumulative return
-    # cum_ret_table = calc.calculate_cumulative_returns_table()
+    cum_ret_table = calc.calculate_cumulative_returns_table()
 
     return render_template(
         'output.html',
         title='Desafio Tech',
         start_date=start_date,
         end_date=end_date,
-        # ,
-        # cum_ret_value=cum_ret_value,
-        # rel_ret=rel_ret,
+        cum_ret_value=cum_ret_value,
+        rel_ret=rel_ret,
         minimum=minimum,
         maximum=maximum,
-        net_equity=net_equity
-        # cum_ret_table=cum_ret_table
+        net_equity=net_equity,
+        cum_ret_table=cum_ret_table
     )
 
 
