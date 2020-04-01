@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+<!--bloco de conteúdo a ser interpretado pelo python-->
+{% block content %}
+
+<div class="card">
+    <h5 class="card-header">Informações de entrada</h5>
+    <form>
+        <div class="form-group">
+            <label for="start_date">Selecione a data inicial:</label>
+            <input type="date" id="start_date" name="start_date" min="2012-03-07" max="2020-01-14">
+            <label for="end_date">Selecione a data final:</label>
+            <input type="date" id="end_date" name="end_date" min="2012-03-07" max="2020-01-14">
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm">Calculate</button>
+    </form>
+</div>
+</div>
+
+{% endblock %}
