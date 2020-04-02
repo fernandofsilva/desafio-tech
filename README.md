@@ -55,7 +55,7 @@ resultados são apresentados abaixo na parte destacada em verde.
 
 * [flask](https://flask.palletsprojects.com/en/1.1.x/) - Framework web
 * [python](https://www.python.org) - script language
-* [pandas](https://pandas.pydata.org) - data handling frameworkd
+* [pandas](https://pandas.pydata.org) - data handling framework
 
 ## Authors
 
