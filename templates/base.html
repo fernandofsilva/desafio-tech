@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/themes/dark.css">
 
     <style>
         .data-center {
@@ -38,74 +40,81 @@
 
             <div class="container">
                 <h1>Giant Zarathustra<small class="text-muted"> FIC FIM</small></h1>
-                <p>Giant Zarathustra, é um fundo de investimentos multimercado que conta com estratégias quantitativas</p>
-                <p><a class="btn btn-primary btn-sm" href="https://gscap.com.br/fundos-zarathustra-darius/" role="button">Mais informações&raquo;</a></p>
+                <p>Usando técnicas como inteligência artifical, o fundo funciona como um radar global, procurando por momentos de pânico ou euforia onde existam oportunidades pontuais e rápidas para obter forte resultado.</p>
+                <p><a class="btn btn-primary my-2" href="https://gscap.com.br/fundos-zarathustra-darius/" role="button">Mais informações&raquo;</a></p>
             </div>
         </div>
 
-        <div class="container">
-            <h4>Dados Gerais</h4>
-
-            <body>
-                <p class="text-sm-left"><b>CNPJ:</b> 11.052.478/0001-81</p>
-                <p class="text-sm-left"><b>Classe:</b> Fundo Multimercado</p>
-                <p class="text-sm-left"><b>Existência:</b> de 07/03/2012 a 14/01/2020</p>
-                <p class="text-sm-left"><b>Rentabilidade absoluta:</b> 257,64%</p>
-                <p class="text-sm-left"><b>Rentabilidade relativa:</b> 246,93%</p>
-            </body>
-            <p><a class="btn btn-secondary btn-sm" href="https://verios.com.br/apps/comparacao/log/20120307-20200114/cdi/11052478000181" role="button">Mais detalhes &raquo;</a></p>
-        </div>
+        <section class="text-center">
+            <div class="container">
+                <h3 class="jumbotron-heading">Dados Gerais</h3>
+                <p class="lead text-muted">Fundo Multimercado, De 07/03/2012 a 14/01/2020, Rentabilidade absoluta: 257.64%, Rentabilidade relativa: 246.93%</p>
+                <p>
+                    <p><a class="btn btn-secondary btn-sm" href="https://verios.com.br/apps/comparacao/log/20120307-20200114/cdi/11052478000181" role="button">Mais detalhes &raquo;</a></p>
+                </p>
+            </div>
+        </section>
 
         <div class="card">
-            <h5 class="card-header">Informações de entrada</h5>
-            <p>Selecione as data de início e término para os cálculos de rendimento do fundo</p>
+            <div class="card-header">
+                Cálculo
+            </div>
             <form method="post">
-                <div class="form-group">
-                    <label for="start_date">Data inicial:</label>
-                    <input type="date" id="start_date" name="start_date" min="2012-03-07" max="2020-01-14">
-                    <label for="end_date">Data final:</label>
-                    <input type="date" id="end_date" name="end_date" min="2012-03-07" max="2020-01-14">
+                <div class="card-body">
+                    <h5 class="card-title">Informações de entrada</h5>
+                    <p class="card-text">Selecione as data de início e término para os cálculos de rendimento do fundo</p>
+                    <label for="start_date">New Date:</label>
+                    <input name="start_date" id="start_date" placeholder="DD/MM/YYYY" data-input />
+                    <label for="end_date">New Date:</label>
+                    <input name="end_date" id="end_date" placeholder="DD/MM/YYYY" data-input />
+                    <button type="submit" value="submit" class="btn btn-secondary btn-sm">Calculate</button>
                 </div>
-                <button type="button" onclick="Calculate()" class="btn btn-secondary btn-sm">Calculate</button>
             </form>
         </div>
-
-        <div>
-            <p> </p>
-        </div>
-        {% block output %} {% endblock %}
+        {% block content %} {% endblock %}
 
     </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--  Flatpickr  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+
     <script>
-        function Calculate() {
-            // Atribui o valor digitado na data para váriavel start_date. Utiliza a biblioteca jquery para facilitar
-            let start_date = $('#start_date').val()
-
-            // Atribui o valor digitado na data para váriavel end_date. Utiliza a biblioteca jquery para facilitar
-            let end_date = $('#end_date').val()
-
-            // Criar tipo um dict, é os dados que serão enviado via post
-            let postData = {
-                "start_date": start_date,
-                "end_date": end_date
-            }
-
-            $.ajax({
-                url: 'calculate',
-                data: postData,
-                success: function(data){alert(data)},
-                error: function() {
-                    alert('failure'); // Aqui é se acontecer algum erro no POST
+        $("#start_date").flatpickr({
+            dateFormat: "Y-m-d",
+            minDate: "2012-03-07",
+            maxDate: "2020-01-14",
+            "disable": [
+                function(date) {
+                    return (date.getDay() === 0 || date.getDay() === 6); // disable weekends
                 }
-            });
-        }
+            ],
+            "locale": {
+                "firstDayOfWeek": 0 // set start day of week to Monday
+            }
+        });
     </script>
+
+    <script>
+        $("#end_date").flatpickr({
+            dateFormat: "Y-m-d",
+            minDate: "2012-03-07",
+            maxDate: "2020-01-14",
+            "disable": [
+                function(date) {
+                    return (date.getDay() === 0 || date.getDay() === 6); // disable weekends
+                }
+            ],
+            "locale": {
+                "firstDayOfWeek": 0 // set start day of week to Monday
+            }
+        });
+    </script>
+
 </body>
 
 </html>

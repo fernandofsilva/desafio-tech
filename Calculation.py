@@ -312,3 +312,16 @@ class Calculation:
         net_equity = end_value.values[0] - start_value.values[0]
 
         return net_equity
+
+
+    def check_date(self) -> bool:
+        """
+        This functions check if the start_date received is greater than end_date
+        :return: true if start_date is greater than end_date
+        """
+
+        # Convert dates to datetime obj
+        start_date = pd.to_datetime(self.start_date, format='%Y-%m-%d')
+        end_date = pd.to_datetime(self.end_date, format='%Y-%m-%d')
+
+        return start_date >= end_date

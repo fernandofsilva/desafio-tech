@@ -8,6 +8,7 @@ from Calculation import *
 # Initiate App
 app = Flask(__name__, template_folder='templates')
 
+
 @app.route('/')
 def main():
     return render_template(
@@ -29,6 +30,10 @@ def process_calculation():
         start_date=start_date,
         end_date=end_date
     )
+
+    # Valid the start and end dates
+    if calc.check_date():
+        return render_template('error.html')
 
     # Cumulative return
     cum_ret_value = f'{calc.calculate_cumulative_returns_value():.4f}'
@@ -61,7 +66,8 @@ def process_calculation():
         minimum=minimum,
         maximum=maximum,
         net_equity=net_equity,
-        cum_ret_table=cum_ret_table
+        cum_ret_table=cum_ret_table.to_html(
+            index=False, classes="thead-dark", justify='center')
     )
 
 

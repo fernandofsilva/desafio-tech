@@ -25,7 +25,7 @@ docker pull fernandofsilva/giant-steps:latest
 O segundo método é fazendo um clone do repositório e fazendo uma build da imagem com o comando abaixo:
 
 ```
-docker build -t giant-steps . 
+docker build -t fernandofsilva/giant-steps . 
 ```
 
 
@@ -37,7 +37,7 @@ Para acessar a aplicação do flask, é necessário executar o run e fazer um ex
 docker run -p 5000:5000 fernandofsilva/giant-steps
 ```
 
-Após isso a aplicação em flask pode ser acessada utilizando o navegador (o código foi feito utilizando como base o navegador chrome, demais navegadores não são garantidos o funcionamento)
+Após isso a aplicação em flask pode ser acessada utilizando o navegador (o código foi feito utilizando como base o navegador chrome, demais navegadores não estão garantidos o pleno funcionamento)
 
 No navegador acesse o caminho: http://127.0.0.1:5000/
 
