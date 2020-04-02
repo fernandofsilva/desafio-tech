@@ -42,6 +42,15 @@ Após isso a aplicação em flask pode ser acessada utilizando o navegador (o c�
 No navegador acesse o caminho: http://127.0.0.1:5000/
 
 
+## Interface
+
+A imagem abaixo contém a interface da página, os campos em vermelho são as 
+informações de entrada (é obrigatório inserir ambas as datas), depois é 
+necessário clicar no botão destacado em azul para executar o código, os 
+resultados são apresentados abaixo na parte destacada em verde.
+
+![](images/interface.jpg "Portal")
+
 ## Built With
 
 * [flask](https://flask.palletsprojects.com/en/1.1.x/) - Framework web
